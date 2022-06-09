@@ -1,5 +1,5 @@
 <?php
-  include 'Database.php';
+  include 'connect.php';
   if(isset($_GET['deleteid'])){
       $id = $_GET['deleteid'];
 
@@ -7,7 +7,7 @@
       $result = mysqli_query($conn,$sql);
       if($result){
         //   echo"delete successfull";
-        header('location:modif.php');
+        header('MabaseD:modif.php');
       }else{
           die(mysqli_error($conn));
       }
