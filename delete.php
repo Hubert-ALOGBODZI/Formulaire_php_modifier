@@ -7,7 +7,7 @@
       $result = mysqli_query($conn,$sql);
       if($result){
         //   echo"delete successfull";
-        header('MabaseD:modif.php');
+        header('location:modif.php');
       }else{
           die(mysqli_error($conn));
       }

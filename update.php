@@ -1,3 +1,5 @@
+<?php   require_once('connect.php');
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,8 @@
 </head>
 <body>
     <h1>contact</h1>
-    <form action="Database.php" method="post" >
+    <!-- <button class="btn btn-primary my-5" name="btlogin"><a href="modif.php" class="text-light">Login</a></button> -->
+    <form method="post" >
         <label for="name">name</label>
        <input type="text"  id="name" name="name">
        
@@ -43,34 +46,28 @@
 
        <br>
 
-       <button>update</button>
+       <button name="submit">update</button>
     </form>
-</body>
-</html> 
+    <?php
+    if(isset($_GET['updateid'])){
+   $id=$_GET['updateid'];
+        $name = $_POST['name'];
+        $Message = $_POST['Message'];
+        $priority = $_POST['priority'];
+        $type = $_POST['type'];
 
+        $sql = "UPDATE mabase SET  name='$name', body='$Message', priority='$priority', type='$type' WHERE id=$id ";
+                 
+        $result = mysqli_query($conn,$sql);
+        if($result){
+            echo "update successful saved";
+             header('location:modif.php');
+        }else{
+            // die(mysqli_error($conn));
 
-
-
-<?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "MabaseD";
-
-// // Create connection
-// $conn = mysqli_connect($servername, $username, $password, $dbname);
-// // Check connection
-// if (!$conn) {
-//   die("Connection failed: " . mysqli_connect_error());
-// }
-
-// $sql = "UPDATE mabase SET lastname='Doe' WHERE id=$id";
-
-// if (mysqli_query($conn, $sql)) {
-//   echo "Record updated successfully";
-// } else {
-//   echo "Error updating record: " . mysqli_error($conn);
-// }
-
-// mysqli_close($conn);
+            echo"update error";
+        }
+    }
 ?>
+</body>
+</html>

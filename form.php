@@ -2,7 +2,7 @@
    include('connect.php');
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
-        $Message = $_POST['Message'];
+        $body = $_POST['body'];
         $priority = $_POST['priority'];
         $type = $_POST['type'];
 
@@ -67,7 +67,8 @@
 
        <br>
 
-       <button name="submit">Send</button>
+       <button name="submit">Send</button><br>
+       <button class="btn btn-primary my-5 "><a href="modif.php" class="text-light">Affichage</a></button>
     </form>
    
 </body>
